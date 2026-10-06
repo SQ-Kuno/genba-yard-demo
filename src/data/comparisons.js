@@ -1,0 +1,166 @@
+// 旧モデル／現行モデルの比較データ。現行モデルはこのマーケットでは扱わない（比較のための参考情報）。
+// rows の better: 'higher' | 'lower' は「数値が大きい／小さいほど有利」。差の向きの表示にだけ使う。
+// 価格の行はコンポーネント側で、旧モデルの会員価格と現行モデルのメーカー希望小売価格から作る（割引率は出さない）。
+
+export const CURRENT_MODELS = {
+  'kn-id190': { id: 'kn-id190', brandId: 'kaname', model: 'ID-190', name: '18V コードレスインパクトドライバー', kind: 'impact', releaseDate: '2025-10', msrp: 35640 },
+  'kn-dd200': { id: 'kn-dd200', brandId: 'kaname', model: 'DD-200', name: '18V コードレスドライバドリル', kind: 'drill', releaseDate: '2025-04', msrp: 31680 },
+  'kn-cs166b': { id: 'kn-cs166b', brandId: 'kaname', model: 'CS-166B', name: '18V 165mm コードレス丸ノコ（ブラシレス）', kind: 'saw', releaseDate: '2025-04', msrp: 63800 },
+  'kn-kb185s': { id: 'kn-kb185s', brandId: 'kaname', model: 'KB-185S', name: 'KX18 リチウムイオンバッテリー 18V 5.0Ah', kind: 'battery', releaseDate: '2024-07', msrp: 23100 },
+  'nd-lx5g': { id: 'nd-lx5g', brandId: 'norda', model: 'LX-5G', name: 'グリーンレーザー墨出し器 フルライン 受光器セット', kind: 'laser', releaseDate: '2025-07', msrp: 231000 },
+  'gl-wl6000': { id: 'gl-wl6000', brandId: 'groundline', model: 'WL-6000', name: 'LED投光器 6000lm（AC100V／KX18両用）', kind: 'light', releaseDate: '2025-05', msrp: 30800 },
+  'bs-ws16n': { id: 'bs-ws16n', brandId: 'bansho', model: 'WS-16N', name: 'VVFストリッパー（エラストマーグリップ）', kind: 'stripper', releaseDate: '2024-02', msrp: 5720 },
+};
+
+const SAME_SUPPORT = (old, current = '○ 対応') => ({ old, current });
+
+export const COMPARISONS = {
+  'kn-id180': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2023年4月', current: '2025年10月' },
+      { group: '主要性能', label: '最大締付トルク', old: 180, current: 190, unit: 'N·m', better: 'higher' },
+      { group: '主要性能', label: '無負荷回転数', old: 3600, current: 3700, unit: 'min⁻¹', better: 'higher' },
+      { group: '主要性能', label: '打撃モード', old: '4段階＋テクス', current: '6段階＋テクス／アプリで設定' },
+      { group: '重量', label: '質量（KB-185装着時）', old: 1.5, current: 1.5, unit: 'kg', better: 'lower' },
+      { group: 'サイズ', label: '全長（ヘッド長）', old: 114, current: 111, unit: 'mm', better: 'lower' },
+      { group: 'バッテリー互換', label: '使えるバッテリー', old: 'KX18 全機種', current: 'KX18 全機種' },
+      { group: '修理対応', label: 'メーカー修理', ...SAME_SUPPORT('○ 対応') },
+      { group: '部品供給', label: '補修用部品', old: '供給中（2032年9月まで）', current: '供給中' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['最大トルクが +10N·m（約5.6%）', '全長が3mm短く', '打撃モードが6段階に。スマホアプリで設定を管理できる'],
+    unchanged: ['KX18 バッテリー（手持ちの電池がそのまま使える）', '6.35mm 六角ビット', '質量 1.5kg', 'メーカー修理・部品供給'],
+    useCases: [
+      { id: 'interior', label: '内装・軽天のビス打ち', pick: 'old', reason: '石膏ボードや軽天のビス打ちでは、180N·mとテクスモードで余裕があります。トルクの差を体感しにくい領域です。' },
+      { id: 'wood', label: '木下地・2×4の組み立て', pick: 'old', reason: '75mmまでのコーススレッドなら、トルクの差はほとんど出ません。' },
+      { id: 'bolt', label: 'M12以上のボルト締めが毎日', pick: 'current', reason: '190N·mと細かいモード切替が効きます。ボルト締めが仕事の中心なら現行モデルを選んでください。' },
+      { id: 'fleet', label: '複数台の設定を会社で管理したい', pick: 'current', reason: 'アプリでの設定管理は ID-190 だけの機能です。' },
+    ],
+  },
+  'kn-dd180': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2022年9月', current: '2025年4月' },
+      { group: '主要性能', label: '最大締付トルク', old: 65, current: 70, unit: 'N·m', better: 'higher' },
+      { group: '主要性能', label: '穴あけ能力（木工）', old: 38, current: 45, unit: 'mm', better: 'higher' },
+      { group: '主要性能', label: '穴あけ能力（鉄工）', old: 13, current: 13, unit: 'mm', better: 'higher' },
+      { group: '重量', label: '質量（KB-185装着時）', old: 1.7, current: 1.6, unit: 'kg', better: 'lower' },
+      { group: 'サイズ', label: '全長', old: 176, current: 168, unit: 'mm', better: 'lower' },
+      { group: 'バッテリー互換', label: '使えるバッテリー', old: 'KX18 全機種', current: 'KX18 全機種' },
+      { group: '修理対応', label: 'メーカー修理', ...SAME_SUPPORT('○ 対応') },
+      { group: '部品供給', label: '補修用部品', old: '供給中（2032年3月まで）', current: '供給中' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['木工の穴あけ能力が 38→45mm', '質量が0.1kg軽く、全長が8mm短く', 'トルクが +5N·m'],
+    unchanged: ['KX18 バッテリー', '13mm キーレスチャックと先端工具', '鉄工 13mm の穴あけ能力', 'メーカー修理・部品供給'],
+    useCases: [
+      { id: 'screw', label: 'ビス締め・下穴あけ中心', pick: 'old', reason: '日常のビス締めと下穴では、65N·m・21段クラッチで十分です。' },
+      { id: 'electric', label: '配管・配線用の貫通穴（〜35mm）', pick: 'old', reason: '35mmまでのホールソーなら旧モデルの能力内です。' },
+      { id: 'large', label: '40mm以上のホールソーを多用', pick: 'current', reason: '木工45mmまで対応する現行モデルのほうが無理なく使えます。' },
+    ],
+  },
+  'kn-cs165': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2021年6月', current: '2025年4月' },
+      { group: '主要性能', label: '最大切込深さ（90°）', old: 65, current: 66, unit: 'mm', better: 'higher' },
+      { group: '主要性能', label: '1充電あたりの切断量（2×4材）', old: 120, current: 180, unit: '本', better: 'higher' },
+      { group: '主要性能', label: 'モーター', old: 'ブラシ付き', current: 'ブラシレス' },
+      { group: '重量', label: '質量（KB-185・刃装着時）', old: 2.9, current: 3.0, unit: 'kg', better: 'lower' },
+      { group: 'サイズ', label: 'のこ刃径', old: '165mm（穴径20mm）', current: '165mm（穴径20mm）' },
+      { group: 'バッテリー互換', label: '使えるバッテリー', old: 'KX18 全機種', current: 'KX18 全機種' },
+      { group: '修理対応', label: 'メーカー修理', old: '○ 対応（2030年3月まで予定）', current: '○ 対応' },
+      { group: '部品供給', label: '補修用部品', old: '一部供給（外装の一部は在庫限り）', current: '供給中' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['ブラシレスモーターで、1充電の切断量が約1.5倍', '切込深さが +1mm'],
+    unchanged: ['165mm チップソー（同じ刃が使える）', 'KX18 バッテリー', '切込深さは実質同じ（65mm）'],
+    useCases: [
+      { id: 'reform', label: 'リフォーム・内装の部分カット', pick: 'old', reason: '1日の切断本数が少ない現場なら、1充電120本で困りません。' },
+      { id: 'backup', label: '2台目・予備機として', pick: 'old', reason: '刃もバッテリーも共通なので、予備機としての相性が最も良い組み合わせです。' },
+      { id: 'framing', label: '新築の建て方・大量カット', pick: 'current', reason: '1充電で約1.5倍切れるブラシレス機のほうが、バッテリー交換の手間を減らせます。' },
+    ],
+  },
+  'kn-kb185': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2020年2月', current: '2024年7月' },
+      { group: '主要性能', label: '電圧・容量', old: '18V 5.0Ah', current: '18V 5.0Ah' },
+      { group: '主要性能', label: '充電時間（KC-18QU）', old: 40, current: 38, unit: '分', better: 'lower' },
+      { group: '主要性能', label: '残量表示', old: '4段階', current: '4段階＋劣化診断' },
+      { group: '重量', label: '質量', old: 0.62, current: 0.63, unit: 'kg', better: 'lower' },
+      { group: 'サイズ', label: '外形', old: '同一', current: '同一（耐衝撃カバー付）' },
+      { group: 'バッテリー互換', label: '使える本体', old: 'KX18 全機種', current: 'KX18 全機種' },
+      { group: '修理対応', label: '修理', old: '— 対象外（交換対応）', current: '— 対象外（交換対応）' },
+      { group: '部品供給', label: '補修用部品', old: '— 対象外', current: '— 対象外' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['劣化診断つきの残量表示', '落下に強い耐衝撃カバー'],
+    unchanged: ['電圧・容量（18V 5.0Ah）', 'KX18 の全本体・全充電器で使える', '質量はほぼ同じ'],
+    useCases: [
+      { id: 'spare', label: '予備バッテリーを増やしたい', pick: 'old', reason: '規格が同じなので、本数を増やす目的なら旧モデルで十分です。' },
+      { id: 'drop', label: '高所作業で落下が多い', pick: 'current', reason: '耐衝撃カバー付きの現行モデルのほうが安心です。' },
+    ],
+  },
+  'nd-lx4g': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2022年3月', current: '2025年7月' },
+      { group: '主要性能', label: '精度', old: '±1.0mm／10m', current: '±0.8mm／10m' },
+      { group: '主要性能', label: '受光器使用時の範囲（半径）', old: 40, current: 50, unit: 'm', better: 'higher' },
+      { group: '主要性能', label: '防塵防水', old: 'IP54', current: 'IP65' },
+      { group: '主要性能', label: 'リモコン', old: 'なし', current: 'Bluetooth リモコン' },
+      { group: '重量', label: '質量（BP-72装着時）', old: 1.6, current: 1.7, unit: 'kg', better: 'lower' },
+      { group: 'サイズ', label: '本体寸法', old: 'φ135 × H210 mm', current: 'φ138 × H218 mm' },
+      { group: 'バッテリー互換', label: '使えるバッテリー', old: 'BP-72（現行と共通）', current: 'BP-72' },
+      { group: '修理対応', label: 'メーカー修理・校正', old: '○ 対応', current: '○ 対応' },
+      { group: '部品供給', label: '補修用部品', old: '供給中（2032年6月まで）', current: '供給中' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['精度が ±1.0 → ±0.8mm/10m', '受光器の範囲が 40 → 50m', 'IP65 と Bluetooth リモコン'],
+    unchanged: ['フルライン（縦4方向・水平全周・地墨）', '専用バッテリー BP-72・受光器 LR-50', 'メーカー修理と校正サービス'],
+    useCases: [
+      { id: 'interior', label: '内装・設備の墨出し（屋内）', pick: 'old', reason: '±1.0mm/10m は内装・設備の墨出しで求められる精度を満たします。' },
+      { id: 'renovation', label: '改修工事・1フロアの墨出し', pick: 'old', reason: '半径40mあれば一般的なフロアは1回の据え付けで届きます。' },
+      { id: 'outdoor', label: '屋外・雨天の外構が多い', pick: 'current', reason: 'IP65 と受光器50mの現行モデルが向いています。' },
+      { id: 'large', label: '大規模倉庫・工場の長距離墨出し', pick: 'current', reason: '精度 ±0.8mm と 50m の範囲が効く現場です。' },
+    ],
+  },
+  'gl-wl5000': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2022年8月', current: '2025年5月' },
+      { group: '主要性能', label: '明るさ（AC）', old: 5000, current: 6000, unit: 'lm', better: 'higher' },
+      { group: '主要性能', label: '明るさ（バッテリー）', old: 3000, current: 3600, unit: 'lm', better: 'higher' },
+      { group: '主要性能', label: '調光', old: '2段階', current: '4段階' },
+      { group: '重量', label: '質量（バッテリー除く）', old: 2.8, current: 3.1, unit: 'kg', better: 'lower' },
+      { group: 'サイズ', label: '本体寸法', old: 'W280 × H330 × D150 mm', current: 'W300 × H345 × D160 mm' },
+      { group: 'バッテリー互換', label: '使えるバッテリー', old: 'KANAME KX18 全機種', current: 'KANAME KX18 全機種' },
+      { group: '修理対応', label: 'メーカー修理', ...SAME_SUPPORT('○ 対応') },
+      { group: '部品供給', label: '補修用部品', old: '供給中（2031年4月まで）', current: '供給中' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['明るさが約2割アップ（6,000lm）', '調光が4段階に', 'USB 給電ポート'],
+    unchanged: ['AC100V／KX18 バッテリー両用', '防塵防水 IP65', '照射角 120°'],
+    useCases: [
+      { id: 'room', label: '一部屋〜内装の夜間作業', pick: 'old', reason: '5,000lm あれば一部屋は十分照らせます。0.3kg 軽いのも持ち運びで効きます。' },
+      { id: 'portable', label: '持ち運びが多い', pick: 'old', reason: '旧モデルのほうが0.3kg軽く、ひと回り小さく収まります。' },
+      { id: 'yard', label: '外構・駐車場など広い屋外', pick: 'current', reason: '6,000lm と細かい調光の現行モデルが向いています。' },
+    ],
+  },
+  'bs-ws16': {
+    rows: [
+      { group: '発売年', label: '発売', old: '2021年2月', current: '2024年2月' },
+      { group: '主要性能', label: '対応電線', old: 'VVF 1.6／2.0mm 2心・3心', current: 'VVF 1.6／2.0mm 2心・3心' },
+      { group: '主要性能', label: '刃の形状', old: '同一', current: '同一' },
+      { group: '主要性能', label: 'グリップ', old: 'PP樹脂', current: 'エラストマー（滑りにくい）' },
+      { group: '重量', label: '質量', old: 210, current: 200, unit: 'g', better: 'lower' },
+      { group: 'サイズ', label: '全長', old: 185, current: 185, unit: 'mm', better: 'lower' },
+      { group: 'バッテリー互換', label: 'バッテリー', old: '— 対象外', current: '— 対象外' },
+      { group: '修理対応', label: '修理', old: '— 交換対応', current: '— 交換対応' },
+      { group: '部品供給', label: '補修用部品', old: '— 対象外', current: '— 対象外' },
+      { group: 'メーカーサポート', label: 'サポート', old: '継続中', current: '継続中' },
+    ],
+    changed: ['グリップが滑りにくいエラストマーに', '10g 軽い'],
+    unchanged: ['刃の形状と切れ味', '対応電線（VVF 1.6／2.0mm 2心・3心）', '全長 185mm'],
+    useCases: [
+      { id: 'daily', label: '屋内配線の皮むき', pick: 'old', reason: '刃は新型と同じなので、作業の仕上がりは変わりません。' },
+      { id: 'gloves', label: '冬場・手袋での作業が多い', pick: 'current', reason: '滑りにくいグリップの新型のほうが握りやすいです。' },
+    ],
+  },
+};

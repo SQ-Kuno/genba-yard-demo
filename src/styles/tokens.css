@@ -1,0 +1,80 @@
+/* デザイントークン。色・書体・余白はここだけで定義し、他のCSSでは直書きしない */
+:root {
+  /* 色: 紺の面 + グレー + 青1色。意味色は状態表示にだけ使う */
+  --ink: #02051c;
+  --text: #02051c;
+  --text-2: #4a4f63;
+  --text-3: #686d80;
+  --line: #e2e3e8;
+  --line-2: #cdcfd6;
+  --bg: #ffffff;
+  --paper: #f4f4f2;
+  --paper-2: #ececea;
+
+  --navy: #050a24;
+  --navy-2: #0c1236;
+  --navy-3: #161d4a;
+  --on-navy: #ffffff;
+  --on-navy-2: rgba(255, 255, 255, 0.72);
+  --navy-line: rgba(255, 255, 255, 0.14);
+
+  --blue: #3e98d3;        /* 大きな面・装飾用（白地の小さな文字には使わない） */
+  --blue-ink: #1f6fa8;    /* 白地の文字・ボタン用（5.4:1） */
+  --blue-ink-hover: #185b8b;
+  --blue-tint: #eaf3fa;
+
+  --signal: #c2410c;      /* 残りわずか・終了間近だけに使う */
+  --signal-tint: #fdf0e9;
+  --ok: #18794e;
+  --ok-tint: #e7f4ed;
+  --warn: #8f5c0f;
+  --warn-tint: #fbf3e2;
+  --ng: #b42318;
+  --ng-tint: #fcecea;
+
+  /* 書体 */
+  --font-sans: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", Meiryo, sans-serif;
+  --font-en: "Archivo", "Noto Sans JP", "Hiragino Sans", sans-serif;
+
+  --fs-h1: clamp(24px, 2.6vw, 34px);
+  --fs-h2: clamp(20px, 2vw, 26px);
+  --fs-h3: 17px;
+  --fs-body: 15px;
+  --fs-sm: 13px;
+  --fs-xs: 11px;
+
+  /* 余白（8pxグリッド） */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  --gutter: 16px;
+  --container: 1240px;
+  --header-h: 56px;
+  --mobile-nav-h: 60px;
+  --sticky-cta-h: 76px;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-pill: 999px;
+
+  --focus: 0 0 0 3px rgba(62, 152, 211, 0.45);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: 24px; }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 40px;
+    --header-h: 72px;
+  }
+}

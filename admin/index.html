@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>管理画面｜GENBA YARD</title>
+  <meta name="description" content="GENBA YARD（現場つながるWi-Fi 契約者限定マーケット）の運営者向け管理画面。商品・出品元・在庫・注文・発送・販売状況を管理します。運営者のログインが必要です。">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- リンクを共有したときの表示用。機能の説明は書かない（検索エンジンには載せない） -->
+  <meta property="og:title" content="GENBA YARD（運営者専用）">
+  <meta property="og:description" content="運営者専用のページです。ログインが必要です。">
+  <meta property="og:image" content="https://sq-kuno.github.io/genba-yard-demo/public/og.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="../public/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../src/styles/tokens.css">
+  <link rel="stylesheet" href="../src/styles/base.css">
+  <link rel="stylesheet" href="../src/styles/components.css">
+  <link rel="stylesheet" href="../src/styles/admin.css">
+</head>
+<body class="admin-body">
+  <!-- 運営者専用。会員（購入者）のログインとは別の管理者ログインが必要 -->
+  <div id="admin-root">
+    <main class="alogin">
+      <div class="alogin__box">
+        <h1 class="alogin__title">GENBA YARD 運営者向け管理画面</h1>
+        <p class="alogin__note">商品の登録・編集、出品元（SELLER）の管理、在庫・注文・発送状況の管理、販売状況の確認を行う画面です。会員（購入者）のログインとは別の、運営者のログインが必要です。読み込み中…</p>
+      </div>
+    </main>
+  </div>
+  <div id="overlay-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <noscript><p class="noscript">管理画面を使うには JavaScript を有効にしてください。</p></noscript>
+  <script type="module" src="../src/admin/main.js"></script>
+</body>
+</html>

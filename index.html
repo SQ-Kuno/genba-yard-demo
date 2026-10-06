@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GENBA YARD｜現場つながるWi-Fi 会員限定の道具マーケット</title>
+  <meta name="description" content="GENBA YARD は「現場つながるWi-Fi」ご契約者だけが入れる、プロの道具の会員制マーケットです。型落ち・廃番でもメーカーサポートや部品供給を明示し、会員限定価格で提供します。">
+  <!-- 会員制クローズドマーケットかつデモ環境のため、検索エンジンには載せない -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#02051C">
+  <link rel="canonical" href="https://sq-kuno.github.io/genba-yard-demo/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GENBA YARD">
+  <meta property="og:title" content="GENBA YARD｜現場で働く人だけが入れる、特別な道具のマーケット">
+  <meta property="og:description" content="「現場つながるWi-Fi」ご契約者限定。型落ち・廃番でも安心して選べる情報と、会員だけの価格。">
+  <meta property="og:image" content="https://sq-kuno.github.io/genba-yard-demo/public/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/layout.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/pages.css">
+  <script>
+    // ログイン済みならログイン画面を最初から隠す（モジュール読込前のちらつき防止）
+    try {
+      var saved = JSON.parse(localStorage.getItem('genba-yard:v1') || 'null');
+      if (saved && saved.session) document.documentElement.dataset.auth = 'in';
+    } catch (error) { /* 保存領域が使えない環境ではログイン画面から始める */ }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GENBA YARD",
+    "description": "現場つながるWi-Fi ご契約者限定の、プロ向け道具の会員制マーケット（デモ環境）",
+    "inLanguage": "ja",
+    "dateModified": "2026-10-06",
+    "publisher": {
+      "@type": "Organization",
+      "name": "【要差し替え:運営会社名】",
+      "url": "https://sq-kuno.github.io/genba-yard-demo/"
+    }
+  }
+  </script>
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <!-- ログイン画面（公開ページ）。JSが無くても内容が読めるよう静的HTMLで持つ -->
+  <div id="login-screen" class="login">
+    <section class="login__brand" aria-labelledby="login-title">
+      <div class="login__brand-inner">
+        <a class="logo logo--invert" href="#/login" aria-label="GENBA YARD">
+          <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 28V4h24v24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M11 28V11h10v17" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+          <span class="logo__word">GENBA YARD</span>
+        </a>
+        <p class="login__eyebrow">現場つながるWi-Fi ご契約者限定</p>
+        <h1 id="login-title" class="login__title">MEMBERS<br>ONLY</h1>
+        <p class="login__lead">ここから先は、<br>現場で働く人のための限定マーケット。</p>
+
+        <div class="login__teaser" aria-label="ログイン後に見られるもの">
+          <p class="login__teaser-label">ログインした先に</p>
+          <ul class="login__teaser-list">
+            <li><span class="login__teaser-num" data-teaser="count">16</span><span>アイテムを公開中</span></li>
+            <li><span class="login__teaser-num" data-teaser="supported">7</span><span>サポート継続中の廃番・終売品</span></li>
+            <li><span class="login__teaser-num" data-teaser="timesale">2</span><span>本日のTIME SALE</span></li>
+          </ul>
+          <div class="login__locked" aria-hidden="true">
+            <div class="login__locked-item"></div>
+            <div class="login__locked-item"></div>
+            <div class="login__locked-item"></div>
+          </div>
+          <p class="login__locked-note">商品と会員価格は、ログイン後に表示されます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="login__panel" aria-labelledby="login-form-title">
+      <div class="login__panel-inner">
+        <div id="login-form-view">
+          <h2 id="login-form-title" class="login__form-title">会員ログイン</h2>
+          <p class="login__form-sub">会員ID または ご登録のメールアドレスでログインしてください。</p>
+          <form id="login-form" class="form" novalidate>
+            <div class="field">
+              <label class="field__label" for="login-id">会員ID ／ メールアドレス</label>
+              <input class="field__input" id="login-id" name="loginId" type="text" inputmode="email" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="例）GY-24-08812 または name@example.jp" required>
+            </div>
+            <div class="field">
+              <label class="field__label" for="login-password">パスワード</label>
+              <div class="field__with-action">
+                <input class="field__input" id="login-password" name="password" type="password" autocomplete="current-password" required>
+                <button class="field__action" type="button" data-toggle-password aria-controls="login-password" aria-pressed="false">表示</button>
+              </div>
+            </div>
+            <p class="form__error" id="login-error" role="alert" hidden></p>
+            <button class="btn btn--primary btn--block btn--lg" type="submit">ログイン</button>
+            <button class="link-btn login__reset-link" type="button" data-login-view="reset">パスワードをお忘れの方</button>
+          </form>
+
+          <div class="login__demo">
+            <p class="login__demo-title"><span class="tag tag--outline">DEMO</span> デモ用アカウントでログイン</p>
+            <p class="login__demo-note">ボタンを押すとID・パスワードが入力されます（パスワードはどちらも <code>genba2026</code>）。リハーサル後は <button class="link-btn" type="button" data-action="demo-reset">デモを最初の状態に戻す</button></p>
+            <div class="login__demo-list" id="demo-accounts">
+              <button class="demo-account" type="button" data-demo-login="demo@genba-yard.example">
+                <span class="demo-account__label">リピート会員（登録情報あり）</span>
+                <span class="demo-account__note">demo@genba-yard.example ／ 最短2タップで購入</span>
+              </button>
+              <button class="demo-account" type="button" data-demo-login="first@genba-yard.example">
+                <span class="demo-account__label">初めて購入する会員</span>
+                <span class="demo-account__note">first@genba-yard.example ／ 契約情報から配送先を自動入力</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="login-first-view" hidden>
+          <h2 class="login__form-title">はじめてご利用の方</h2>
+          <p class="login__form-sub">「現場つながるWi-Fi」のご契約時に登録した携帯電話番号に、確認コードをSMSでお送りします。確認後に会員IDとパスワードを設定できます。</p>
+          <form id="first-form" class="form" novalidate>
+            <div class="field">
+              <label class="field__label" for="first-tel">ご契約時の携帯電話番号</label>
+              <input class="field__input" id="first-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="090-0000-0000" required>
+            </div>
+            <p class="form__error" id="first-error" role="alert" hidden></p>
+            <p class="form__success" id="first-done" role="status" hidden>確認コードを送信しました（デモのため実際には送信されません）。</p>
+            <button class="btn btn--primary btn--block btn--lg" type="submit">確認コードを送る</button>
+            <button class="link-btn login__reset-link" type="button" data-login-view="form">ログイン画面に戻る</button>
+          </form>
+        </div>
+
+        <div id="login-reset-view" hidden>
+          <h2 class="login__form-title">パスワードの再設定</h2>
+          <p class="login__form-sub">ご登録のメールアドレスに、再設定用のリンクをお送りします。</p>
+          <form id="reset-form" class="form" novalidate>
+            <div class="field">
+              <label class="field__label" for="reset-email">メールアドレス</label>
+              <input class="field__input" id="reset-email" name="email" type="email" autocomplete="email" placeholder="name@example.jp" required>
+            </div>
+            <p class="form__error" id="reset-error" role="alert" hidden></p>
+            <p class="form__success" id="reset-done" role="status" hidden>再設定用のメールを送信しました（デモのため実際には送信されません）。</p>
+            <button class="btn btn--primary btn--block btn--lg" type="submit">再設定メールを送信</button>
+            <button class="link-btn login__reset-link" type="button" data-login-view="form">ログイン画面に戻る</button>
+          </form>
+        </div>
+
+        <section class="login__newcomer" aria-labelledby="newcomer-title">
+          <h2 id="newcomer-title" class="login__about-title">会員IDをお持ちでない方</h2>
+          <div class="login__newcomer-actions">
+            <button class="btn btn--secondary btn--block" type="button" data-login-view="first">はじめてご利用の契約者の方（SMSで登録）</button>
+            <p class="login__newcomer-note">まだ「現場つながるWi-Fi」をご契約でない方は、契約するとこのマーケットに入れます。お申し込み・ご相談は会員サポートへ。</p>
+          </div>
+        </section>
+
+        <section class="login__about" aria-labelledby="about-title">
+          <h2 id="about-title" class="login__about-title">GENBA YARD とは</h2>
+          <ol class="numbered">
+            <li>
+              <span class="numbered__num">01</span>
+              <div>
+                <h3 class="numbered__title">ご契約者だけが入れる</h3>
+                <p class="numbered__text">「現場つながるWi-Fi」をご契約の法人・個人事業主さまが対象です。会員IDは契約時にお送りしたご案内に記載しています。</p>
+              </div>
+            </li>
+            <li>
+              <span class="numbered__num">02</span>
+              <div>
+                <h3 class="numbered__title">型落ちでも、条件をすべて開示</h3>
+                <p class="numbered__text">メーカーサポート・修理・部品供給・バッテリー互換を商品ごとに明示。なぜこの価格なのかも隠しません。</p>
+              </div>
+            </li>
+            <li>
+              <span class="numbered__num">03</span>
+              <div>
+                <h3 class="numbered__title">現場から、片手で買える</h3>
+                <p class="numbered__text">配送先とお支払い方法は契約情報から自動で入ります。請求書払い・現場直送にも対応しています。</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <aside class="login__support" aria-label="サポート窓口">
+          <p class="login__support-title">会員サポート</p>
+          <a class="login__support-tel" href="tel:0120000000">0120-000-000</a>
+          <p class="login__support-hours">平日 9:00–18:00（土日祝・年末年始を除く）</p>
+        </aside>
+
+        <p class="login__demo-env">これはデモ環境です。掲載の商品・ブランド・価格・会員情報はすべて架空です。最終更新日：2026年10月6日</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 会員エリア（ログイン後）。中身は src/ のコンポーネントが描画する -->
+  <div id="app" class="app" hidden>
+    <header id="site-header" class="site-header"></header>
+    <main id="main" class="site-main" tabindex="-1"></main>
+    <footer id="site-footer" class="site-footer"></footer>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="メインメニュー"></nav>
+  </div>
+
+  <div id="overlay-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <noscript><p class="noscript">このサイトの会員エリアは JavaScript を有効にしてご利用ください。</p></noscript>
+</body>
+</html>
